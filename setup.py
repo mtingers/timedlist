@@ -3,14 +3,14 @@ import setuptools
 
 setup(
     name='timedlist',
-    version='1.0.0',
+    version='1.0.1',
     author='Matthew Ingersoll',
     author_email='matth@mtingers.com',
     packages=['timedlist',],
     license='MIT License',
     long_description='A self-pruning list based off of time.',
     url='https://github.com/mtingers/timedlist',
-    install_requires=open('requirements.txt').read().strip().split('\n'),
+    install_requires=[],
     keywords=['TimedList', 'Sliding window',],
     classifiers=[
         'Intended Audience :: Developers',
