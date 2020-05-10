@@ -11,8 +11,10 @@ setup(
     long_description='A self-pruning list based off of time.',
     url='https://github.com/mtingers/timedlist',
     install_requires=open('requirements.txt').read().strip().split('\n'),
+    keywords=['TimedList', 'Sliding window',],
     classifiers=[
-        'License :: Other/Proprietary License',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
