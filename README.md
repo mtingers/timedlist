@@ -1,7 +1,8 @@
 # timedlist
 
 A self-pruning list based off of time. Items are removed when their age is
-greater than the max time specified.
+greater than the max time specified. This is commonly used for creating a
+sliding window within a specified timeframe.
 
 # Install
 
@@ -14,11 +15,10 @@ pip install timedlist
 The following creates a TimedList that stores items with a max age of 24 hours.
 Since there can be slippage, there is a 3.0% allowance on either end +- the
 maxtime.
-```
+```python
 from timedlist import TimedList
 tl1 = TimedList(maxtime=60*60*24, filled_percent=3.0)
 ```
-
 
 Note that having maxtime=None, pruning will not be done and will need to be
 called manually, `tl1.prune(maxtime=N)`,or deleted manually using `del()`.
