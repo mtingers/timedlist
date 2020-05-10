@@ -3,7 +3,7 @@ import setuptools
 
 setup(
     name='timedlist',
-    version='1.0.2',
+    version='1.0.3',
     author='Matthew Ingersoll',
     author_email='matth@mtingers.com',
     packages=['timedlist',],

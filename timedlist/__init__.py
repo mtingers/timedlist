@@ -1,4 +1,4 @@
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 VERSION = __version__
 
 
@@ -39,6 +39,7 @@ class TimedList:
     @property
     def elapsed(self):
         """Get the total time from the last to first item in list"""
+        self.prune()
         if not self.times:
             return 0.0
         return self.times[-1] - self.times[0]
@@ -70,39 +71,51 @@ class TimedList:
 
     def count(self, search):
         """Count items in list matching search"""
+        self.prune()
         return self.items.count(search)
 
     def count_time(self, search):
         """Count items in time list matching search"""
+        self.prune()
         return self.times.count(search)
 
     def index(self, search):
         """Find index of search in list"""
+        self.prune()
         return self.times.index(search)
 
     def insert(self, index, epoch, item):
         """Same as list insert"""
+        self.prune()
         self.times.insert(index, epoch)
         self.items.insert(index, item)
 
     def pop(self):
         """Sam as list pop but returns time and item"""
+        self.prune()
         return (self.times.pop(), self.items.pop())
 
     def remove(self, value):
         """Remove first occurrence of value."""
+        self.prune()
         index = self.items.index(value)
         del(self.items[index])
         del(self.times[index])
 
     def reverse(self):
         """Reverse *IN PLACE*."""
+        self.prune()
         self.times.reverse()
         self.items.reverse()
 
     def sort(self):
-        """Stable sort *IN PLACE*."""
-        raise Exception('Not implemented. Sorting a timelist/window probably does not make sense.')
+        """Stable sort *IN PLACE*.
+        IMPORTANT: The time list is not touched only the items list is sorted.
+        This meeans that the time keys are reassociated with different items.
+        """
+        self.prune()
+        self.items.sort()
+        #raise Exception('Not implemented. Sorting a timelist/window probably does not make sense.')
 
     def __str__(self):
         out = 'TimedList(['
@@ -134,9 +147,11 @@ class TimedList:
         return new_list
 
     def __radd__(self, other):
+        self.prune()
         return self.__add__(other)
 
     def __reversed__(self):
+        self.prune()
         return (reversed(self.times), reversed(self.items))
 
 
@@ -158,6 +173,7 @@ class TimedList:
         return self.times[key]
 
     def __len__(self):
+        self.prune()
         return len(self.times)
 
     def __lt__(self, other):

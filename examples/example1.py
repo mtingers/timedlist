@@ -51,8 +51,8 @@ for i in combined_tl:
 tl1.clear()
 print('len-after-clear: {}'.format(len(tl1)))
 
-# there is no sort (exception is raised)
-# tl1.sort()
+# This sorts only the items and they are reassociated with different times
+tl1.sort()
 
 # __str__/__repr__ example
 print(tl2)

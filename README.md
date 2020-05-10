@@ -17,7 +17,7 @@ Since there can be slippage, there is a 3.0% allowance on either end +- the
 maxtime.
 ```python
 from timedlist import TimedList
-tl1 = TimedList(maxtime=60*60*24, filled_percent=3.0)
+timed_list = TimedList(maxtime=60*60*24, filled_percent=3.0)
 ```
 
 Note that having maxtime=None, pruning will not be done and will need to be
@@ -80,8 +80,8 @@ for i in combined_tl:
 tl1.clear()
 print('len-after-clear: {}'.format(len(tl1)))
 
-# there is no sort (exception is raised)
-# tl1.sort()
+# This sorts only the items and they are reassociated with different times
+tl1.sort()
 
 # __str__/__repr__ example
 print(tl2)
