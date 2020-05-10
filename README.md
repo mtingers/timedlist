@@ -9,6 +9,21 @@ greater than the max time specified.
 pip install timedlist
 ```
 
+# Getting Started
+
+The following creates a TimedList that stores items with a max age of 24 hours.
+Since there can be slippage, there is a 3.0% allowance on either end +- the
+maxtime.
+```
+from timedlist import TimedList
+tl1 = TimedList(maxtime=60*60*24, filled_percent=3.0)
+```
+
+
+Note that having maxtime=None, pruning will not be done and will need to be
+called manually, `tl1.prune(maxtime=N)`,or deleted manually using `del()`.
+
+
 # Examples
 
 ```python
